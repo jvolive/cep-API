@@ -8,7 +8,6 @@ const limpaFormulario = (endereco) => {
 };
 
 const preencherFormulario = (endereco) => {
-  limpaFormulario();
   document.getElementById("endereco").value = endereco.logradouro;
   document.getElementById("bairro").value = endereco.bairro;
   document.getElementById("cidade").value = endereco.localidade;
@@ -20,6 +19,8 @@ const isNumber = (numero) => /^[0-9]+$/.test(numero);
 const cepValido = (cep) => cep.length == 8 && isNumber(cep);
 
 const pesquisarCep = async () => {
+  limpaFormulario();
+  
   const cep = document.getElementById("cep").value;
   const url = `http://viacep.com.br/ws/${cep}/json/`;
   if (cepValido(cep)) {
